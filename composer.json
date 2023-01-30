@@ -25,9 +25,9 @@
     },
     "autoload": {
 		"psr-4": {
-            "PingYi\\JsonSerializer\\ClosureSerializer\\": "src/ClosureSerializer/",
-            "PingYi\\JsonSerializer\\Exception\\": "src/Exception/",
-            "PingYi\\JsonSerializer\\Test\\": "tests/"
+            "Pingyi\\JsonSerializer\\ClosureSerializer\\": "src/ClosureSerializer/",
+            "Pingyi\\JsonSerializer\\Exception\\": "src/Exception/",
+            "Pingyi\\JsonSerializer\\Test\\": "tests/"
 		}
 	},
     "require-dev": {
