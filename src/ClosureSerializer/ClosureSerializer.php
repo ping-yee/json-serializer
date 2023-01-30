@@ -41,7 +41,6 @@ class ClosureSerializer implements SerializerInterface
             };
         } catch (\Throwable $th) {
             throw ClosureSerializerException::forUnserializeFail();
-            
         }
 
         return $closure;

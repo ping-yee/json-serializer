@@ -11,12 +11,12 @@ class ClosureSerializerException extends \Exception implements ClosureSerializer
         parent::__construct($message, $code, $previous);
     }
 
-    public static function forSerializeFail(): ClosureSerializerException 
+    public static function forSerializeFail(): ClosureSerializerException
     {
         return new self("Serialize Data fail, please try again.");
     }
 
-    public static function forNotClosure(): ClosureSerializerException 
+    public static function forNotClosure(): ClosureSerializerException
     {
         return new self("The serialized data type is not closure, please put in the closure type data.");
     }
