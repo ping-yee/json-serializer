@@ -20,10 +20,10 @@ Simply put, This repository complements the shortcomings of two repositories and
 composer install pingyi/json-serializer
 ```
 
-## Using
+## How to Use
 
 ### Serializing Data
-You still use the Zumba\JsonSerializer to serialize\unserialize your variables, object, it will be like:
+You still use the Zumba\JsonSerializer to serialize\unserialize your variables or object, it will be like:
 
 ```php
 class MyCustomClass {
