@@ -1,10 +1,12 @@
 {
     "name": "pingyi/json-serializer",
-    "description": "PHP microservice orchestration pattern library.",
+    "description": "Mixed of two repositories for serializing and unserializing PHP variables, object and closure.",
     "keywords": [
 		"php",
-		"orchestration",
-        "saga"
+		"json",
+        "serialize",
+        "serializer",
+        "closure"
 	],
     "type": "library",
     "license": "MIT",
