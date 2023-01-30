@@ -5,6 +5,7 @@ namespace Pingyi\JsonSerializer\ClosureSerializer;
 use Closure;
 use SuperClosure\SerializerInterface;
 use Laravel\SerializableClosure\SerializableClosure;
+use Pingyi\JsonSerializer\Exception\ClosureSerializerException;
 
 class ClosureSerializer implements SerializerInterface
 {
@@ -21,7 +22,7 @@ class ClosureSerializer implements SerializerInterface
         try {
             $serialized = serialize(new SerializableClosure($closure));
         } catch (\Throwable $th) {
-            //throw something...
+            throw ClosureSerializerException::forSerializeFail();
         }
 
         return $serialized;
@@ -36,17 +37,18 @@ class ClosureSerializer implements SerializerInterface
             $closure = unserialize($serialized)->getClosure();
 
             if (!$closure instanceof Closure) {
-                //throw something...
-            }
+                throw ClosureSerializerException::forNotClosure();
+            };
         } catch (\Throwable $th) {
-            //throw something...
+            throw ClosureSerializerException::forUnserializeFail();
+            
         }
 
         return $closure;
     }
 
     /**
-     * @deprecated v1.0
+     * @deprecated v0.1
      */
     public function getData(\Closure $closure, $forSerialization = false)
     {
