@@ -1,6 +1,6 @@
 <?php
 
-namespace Pingyi\ClosureSerializer;
+namespace Pingyi\JsonSerializer\ClosureSerializer;
 
 use Closure;
 use SuperClosure\SerializerInterface;
