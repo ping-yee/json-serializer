@@ -17,7 +17,7 @@ Simply put, This repository complements the shortcomings of two repositories and
 ### Composer Install
 
 ```bash
-composer install pingyi/json-serializer
+composer require pingyi/json-serializer
 ```
 
 ## How to Use
