@@ -1,5 +1,5 @@
 {
-    "name": "pingyi/json",
+    "name": "pingyi/json-serializer",
     "description": "PHP microservice orchestration pattern library.",
     "keywords": [
 		"php",
