@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This repository provides the variables, object and closure serializing and unserializing by integrate two repositories([Zumba\JsonSerializer](https://github.com/zumba/json-serializer) and [laravel/serializable-closure](https://github.com/laravel/serializable-closure), respectively) for PHP.
+This repository provides the variables, object and closure serializing and unserializing by integrate two repositories([Zumba\JsonSerializer](https://github.com/zumba/json-serializer) and [laravel/serializable-closure](https://github.com/laravel/serializable-closure)) for PHP.
 
-It still leave the original repo operation and solve the original repo [Zumba\JsonSerializer](https://github.com/zumba/json-serializer) problem that cannot serialize the *closure* because the dependency repo [SuperClosure\Serializer](https://github.com/jeremeamia/super_closure) is no longer maintained.
+It still leave the original repo [Zumba\JsonSerializer](https://github.com/zumba/json-serializer) operation and solve it's problem that cannot serialize the *closure* because the dependency repo [SuperClosure\Serializer](https://github.com/jeremeamia/super_closure) is no longer maintained.
 
 Simply put, This repository complements the shortcomings of two repositories and provides a complete soluation for PHP Object/Closure serialization.
 
