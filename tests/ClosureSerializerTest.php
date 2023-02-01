@@ -87,28 +87,29 @@ class ClosureSerializerTest extends TestCase
 
     public function testSerializeArray()
     {
-        $serializedData = '{"name":"Nick","array":{"foo":"baz","xyz":"asd"},"closure_1":{"@closure":true,"value":"O:47:\"Laravel\\SerializableClosure\\SerializableClosure\":1:{s:12:\"seri
-alizable\";O:46:\"Laravel\\SerializableClosure\\Serializers\\Signed\":2:{s:12:\"serializable\";s:312:\"O:46:\"Laravel\\SerializableClosure\\Serializers\\Native\":5:{s:3:\"use\";
-a:0:{}s:8:\"function\";s:83:\"function (string $s = \"Hello Closure_1\") {\n                return $s;\n            }\";s:5:\"scope\";s:48:\"Pingyi\\JsonSerializer\\Test\\Closur
-eSerializerTest\";s:4:\"this\";N;s:4:\"self\";s:32:\"00000000000001550000000000000000\";}\";s:4:\"hash\";s:44:\"yotONZ3w5jjUdUhAGU6+CPlOammmNGPZXH8a2BEclGU=\";}}"},"closure_2":{
-"@closure":true,"value":"O:47:\"Laravel\\SerializableClosure\\SerializableClosure\":1:{s:12:\"serializable\";O:46:\"Laravel\\SerializableClosure\\Serializers\\Signed\":2:{s:12:\
-"serializable\";s:278:\"O:46:\"Laravel\\SerializableClosure\\Serializers\\Native\":5:{s:3:\"use\";a:0:{}s:8:\"function\";s:49:\"fn (string $s = \"Hello Closure_2\") => $s\n
-   \";s:5:\"scope\";s:48:\"Pingyi\\JsonSerializer\\Test\\ClosureSerializerTest\";s:4:\"this\";N;s:4:\"self\";s:32:\"00000000000001560000000000000000\";}\";s:4:\"hash\";s:44:\"U1
-EqeSyCAT+iSoCE4PUlQsPjWh7VR2Kb9paGkF6jIbs=\";}}"}}';
+        $serializedData = $this->jsonSerializer->serialize($this->closureIncludedArray);
 
-        $serializedBySerializer = $this->jsonSerializer->serialize($this->closureIncludedArray);
+        $unSerializedArray = $this->jsonSerializer->unserialize($serializedData);
 
-        $this->assertEquals($serializedBySerializer, $serializedData);
+        $this->assertEquals($this->closureIncludedArray, $unSerializedArray);
+
+        $this->assertEquals("Hello Closure_1", call_user_func($unSerializedArray["closure_1"]));
+
+        $this->assertEquals("Hello Closure_2", call_user_func($unSerializedArray["closure_2"]));
+
+        $this->assertEquals("Foo", call_user_func($unSerializedArray["closure_1"], "Foo"));
+
+        $this->assertEquals("Foo", call_user_func($unSerializedArray["closure_2"], "Foo"));
     }
 
     public function testSerializeNormalClosure()
     {
-        $serializedData = 'O:47:"Laravel\SerializableClosure\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\SerializableClosure\Serializers\Signed":2:{s:12:"serializable";s:252:"O:
-46:"Laravel\SerializableClosure\Serializers\Native":5:{s:3:"use";a:0:{}s:8:"function";s:40:"fn (string $s = "Hello Closure_2") => $s";s:5:"scope";s:31:"Pingyi\JsonSerializer\Ser
-ialize";s:4:"this";N;s:4:"self";s:32:"000000000000000d0000000000000000";}";s:4:"hash";s:44:"ITNhyNE0OxHZCAkT0EJ3tPeFE3IsH/tO/Gnjxcgf0qg=";}}';
+        $serializedData = $this->jsonSerializer->serialize($this->closureOnly);
 
-        $serializedBySerializer = $this->jsonSerializer->serialize($this->closureOnly);
+        $unSerializedClosure = $this->jsonSerializer->unserialize($serializedData);
 
-        $this->assertEquals($serializedBySerializer, $serializedData);
+        $this->assertEquals("Hello Closure_2", call_user_func($unSerializedClosure));
+
+        $this->assertEquals("Foo", call_user_func($unSerializedClosure, "Foo"));
     }
 }
